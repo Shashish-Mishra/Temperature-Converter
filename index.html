@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>temperature</title>
+    <style>
+        body {
+            /* background-color: black;
+            color: white; */
+            background: #bdc3c7;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #2c3e50, #bdc3c7);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+        
+        .bg {
+            /* background-color: black; */
+            margin: auto;
+            color: lime;
+            font-size: 30px;
+            text-align: center;
+            padding: 5px;
+            top: 50%;
+            margin-top: 12%;
+            width: auto;
+        }
+        
+        input[type="number"] {
+            border-radius: 10px;
+            height: 40px;
+            width: auto;
+            font-size: 20px;
+            font-family: 'Heebo', sans-serif;
+            color: red;
+            outline: none;
+        }
+        
+        button {
+            border-radius: 20px;
+            padding: 5px;
+            text-decoration: none;
+            font-size: 20px;
+            outline: none;
+            color: rgb(10, 6, 252);
+            text-align: center;
+            padding-right: 10px;
+            background-color: bisque;
+        }
+        
+        #mySelect {
+            border-radius: 20px;
+            padding: 5px;
+            text-align: center;
+            font-size: 15px;
+            font-family: 'Cherry Swash', cursive;
+            outline: none;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div class="bg">
+        <h2>Temprature Converter</h2>
+        <br>
+        <input type="number" id="temp" placeholder="enter temperature here">
+        <div>
+
+            <select id="mySelect">
+          <option>farenheit</option>
+          <option>celcius</option>
+          <option>kelvin</option>
+        </select>
+            <!-- <label for="yes or no">select Temp:</label> Farenheit:
+        <input type="radio" class="radio" id="decision" name="f" value="yes" />celcius:<input type="radio" class="radio" id="decision" name="f" value="no"> -->
+        </div>
+        <p id="convert-temp"></p>
+        <button onclick="start();"> convert Here</button>
+    </div>
+    <script>
+        function start() {
+
+            if (document.getElementById("temp").value == "") {
+                document.getElementById("convert-temp").innerHTML = "please enter temprature";
+            } else {
+                let selectedValue = document.getElementById("mySelect").selectedIndex;
+                //     var selectedValue;
+                //     const rbs = document.querySelectorAll('input[name="f"]');
+                //     for (const rb of rbs) {
+                //         if (rb.checked) {
+                //             selectedValue = rb.value;
+                //             break;
+                //         }
+                //     }
+                //     console.log(selectedValue);
+
+                function convertCel(num) {
+                    var c = ((num - 32) * 5) / 9;
+                    return c;
+                }
+
+                function convertFar(num) {
+                    var f = ((num * 9) / 5) + 32;
+                    return f;
+                }
+
+                function convertKtoC(num) {
+                    var k = num - 273.15;
+                    return k
+                }
+
+                if (selectedValue == 0) {
+                    var result = convertCel(document.getElementById("temp").value);
+                    document.getElementById("convert-temp").innerHTML = result + '';
+                } else if (selectedValue == 1) {
+                    var result = convertFar(document.getElementById("temp").value);
+                    document.getElementById("convert-temp").innerHTML = result;
+                } else {
+                    var result = convertKtoC(document.getElementById("temp").value);
+                    document.getElementById("convert-temp").innerHTML = result + '';
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
